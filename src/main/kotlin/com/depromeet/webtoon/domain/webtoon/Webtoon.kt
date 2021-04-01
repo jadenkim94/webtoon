@@ -12,4 +12,10 @@ class Webtoon (name:String) {
 
     @Column(name="name")
     var name:String = name
+
+    fun toWebtoonDto(): WebtoonDto{
+        return WebtoonDto(
+            name = name
+        )
+    }
 }
