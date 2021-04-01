@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service
 class WebtoonService {
 
     @Autowired
-    lateinit var webtoonRepository: WebtoonRepository
+    private lateinit var webtoonRepository: WebtoonRepository
 
     fun getWebtoons(): List<WebtoonDto>{
         val webtoon = webtoonRepository.findAll()

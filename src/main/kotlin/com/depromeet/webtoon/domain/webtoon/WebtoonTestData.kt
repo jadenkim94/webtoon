@@ -5,7 +5,10 @@ import org.springframework.stereotype.Component
 import javax.annotation.PostConstruct
 
 @Component
-class WebtoonTestData (@Autowired val webtoonRepository: WebtoonRepository){
+class WebtoonTestData{
+
+    @Autowired
+    private lateinit var webtoonRepository: WebtoonRepository
 
     @PostConstruct
     fun initTestData(){
