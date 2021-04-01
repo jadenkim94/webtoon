@@ -25,6 +25,9 @@ dependencies {
     developmentOnly("org.springframework.boot:spring-boot-devtools")
 
     runtimeOnly("com.h2database:h2")
+  
+    // logger
+    implementation ("io.github.microutils:kotlin-logging-jvm:2.0.2")
 
     // test
     testImplementation("org.springframework.boot:spring-boot-starter-test")
@@ -32,6 +35,7 @@ dependencies {
 
     testImplementation("io.kotest:kotest-runner-junit5:4.4.3")
     testImplementation("io.kotest:kotest-extensions-spring:4.4.3")
+
 }
 
 tasks.withType<KotlinCompile> {
