@@ -1,21 +1,23 @@
 package com.depromeet.webtoon.domain.webtoon
 
+import com.depromeet.webtoon.domain.author.Author
+import com.depromeet.webtoon.domain.author.AuthorRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
-import java.time.LocalDateTime
 import javax.annotation.PostConstruct
 
 @Component
-class WebtoonTestData {
-
-    @Autowired
-    private lateinit var webtoonRepository: WebtoonRepository
+class WebtoonTestData(@Autowired val webtoonRepository: WebtoonRepository, @Autowired val authorRepository: AuthorRepository) {
 
     @PostConstruct
     fun initTestData() {
         for (i in 1..10) {
-            val createdTime = LocalDateTime.now()
-            val webtoon = Webtoon("test$i", "author$i", createdTime, createdTime)
+            val author = Author("author$i", null)
+            authorRepository.save(author)
+
+            val authorList = ArrayList<Author>()
+            authorList.add(author)
+            val webtoon = Webtoon("test$i", authorList)
             webtoonRepository.save(webtoon)
         }
     }

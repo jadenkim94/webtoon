@@ -1,6 +1,6 @@
-package com.depromeet.webtoon.domain.webtoon
+package com.depromeet.webtoon.domain.author
 
-import com.depromeet.webtoon.domain.author.Author
+import com.depromeet.webtoon.domain.webtoon.Webtoon
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
@@ -15,9 +15,9 @@ import javax.persistence.ManyToMany
 
 @Entity
 @EntityListeners(AuditingEntityListener::class)
-class Webtoon(
+class Author(
     name: String,
-    authors: List<Author>
+    webtoons: List<Webtoon>?
 ) {
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -27,8 +27,8 @@ class Webtoon(
     @Column(name = "name")
     var name: String = name
 
-    @ManyToMany
-    var authors: List<Author> = authors
+    @ManyToMany(mappedBy = "authors")
+    var webtoons: List<Webtoon>? = webtoons
 
     @CreatedDate
     var createdAt: LocalDateTime = LocalDateTime.MIN

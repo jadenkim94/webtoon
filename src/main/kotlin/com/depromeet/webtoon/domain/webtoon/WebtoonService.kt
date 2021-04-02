@@ -1,21 +1,27 @@
 package com.depromeet.webtoon.domain.webtoon
 
+import com.depromeet.webtoon.domain.author.AuthorRepository
+import com.depromeet.webtoon.domain.webtoon.dto.WebtoonCreateRequestDto
+import com.depromeet.webtoon.domain.webtoon.dto.WebtoonCreateResponseDto
+import com.depromeet.webtoon.domain.webtoon.dto.toWebtoonCreateResponseDto
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import java.time.LocalDateTime
 
 @Service
-class WebtoonService(@Autowired val webtoonRepository: WebtoonRepository) {
+class WebtoonService(@Autowired val webtoonRepository: WebtoonRepository, @Autowired val authorRepository: AuthorRepository) {
 
-    fun getWebtoons(): List<WebtoonDto> {
+    fun getWebtoons(): List<WebtoonCreateResponseDto> {
         val webtoon = webtoonRepository.findAll()
-        return webtoon.map { it.toWebtoonDto() }
+
+        return webtoon.map { it.toWebtoonCreateResponseDto() }
     }
 
-    fun createWebtoon(webtoonCreateDto: WebtoonCreateDto): WebtoonDto {
-        val createdAt = LocalDateTime.now()
-        val newWebtoon = Webtoon(webtoonCreateDto.name, webtoonCreateDto.author, createdAt, createdAt)
+    fun createWebtoon(webtoonCreateRequestDto: WebtoonCreateRequestDto): WebtoonCreateResponseDto {
+
+        val foundedAuthors = webtoonCreateRequestDto.authors.map { authorRepository.findById(it.id!!).get() }
+
+        val newWebtoon = Webtoon(webtoonCreateRequestDto.name, foundedAuthors)
         val savedNewWebtoon = webtoonRepository.save(newWebtoon)
-        return savedNewWebtoon.toWebtoonDto()
+        return savedNewWebtoon.toWebtoonCreateResponseDto()
     }
 }
