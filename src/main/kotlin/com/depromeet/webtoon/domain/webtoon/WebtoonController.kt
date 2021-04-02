@@ -3,11 +3,15 @@ package com.depromeet.webtoon.domain.webtoon
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.*
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.ResponseBody
+import org.springframework.web.bind.annotation.RestController
 
 
 @RestController
-class WebtoonController (@Autowired val webtoonService: WebtoonService){
+class WebtoonController(@Autowired val webtoonService: WebtoonService) {
 
     private val log = LoggerFactory.getLogger(WebtoonController::class.java)
 
@@ -25,7 +29,6 @@ class WebtoonController (@Autowired val webtoonService: WebtoonService){
         log.info("웹툰 생성")
         return ResponseEntity.status(201).body(createdWebtoonDto)
     }
-
-
-
 }
+
+

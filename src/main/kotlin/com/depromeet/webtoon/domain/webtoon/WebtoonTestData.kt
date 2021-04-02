@@ -6,19 +6,17 @@ import java.time.LocalDateTime
 import javax.annotation.PostConstruct
 
 @Component
-class WebtoonTestData{
+class WebtoonTestData {
 
     @Autowired
     private lateinit var webtoonRepository: WebtoonRepository
 
     @PostConstruct
-    fun initTestData(){
-        for(i in 1..10){
+    fun initTestData() {
+        for (i in 1..10) {
             val createdTime = LocalDateTime.now()
             val webtoon = Webtoon("test$i", "author$i", createdTime, createdTime)
             webtoonRepository.save(webtoon)
         }
     }
-
-
 }

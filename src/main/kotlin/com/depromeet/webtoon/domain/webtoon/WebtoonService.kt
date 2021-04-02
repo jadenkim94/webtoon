@@ -5,11 +5,11 @@ import org.springframework.stereotype.Service
 import java.time.LocalDateTime
 
 @Service
-class WebtoonService (@Autowired val webtoonRepository: WebtoonRepository){
+class WebtoonService(@Autowired val webtoonRepository: WebtoonRepository) {
 
-    fun getWebtoons(): List<WebtoonDto>{
+    fun getWebtoons(): List<WebtoonDto> {
         val webtoon = webtoonRepository.findAll()
-        return webtoon.map{ it.toWebtoonDto() }
+        return webtoon.map { it.toWebtoonDto() }
     }
 
     fun createWebtoon(webtoonCreateDto: WebtoonCreateDto): WebtoonDto {

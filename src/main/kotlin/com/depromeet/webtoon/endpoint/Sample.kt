@@ -8,14 +8,11 @@ class Sample {
 
     @GetMapping("/")
     fun homeController(): String {
-        var sample = SampleDto("test")
+        val sample = SampleDto("test")
         sample.age = 20 // setter
 
         return sample.nameTwice()
     }
 
     fun SampleDto.nameTwice() = "${this.name.repeat(2)} gggggg"
-
-
-
 }

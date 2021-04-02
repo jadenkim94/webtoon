@@ -8,5 +8,4 @@ data class WebtoonDto(
     val author: String,
     val createdAt: LocalDateTime,
     val lastModifiedAt: LocalDateTime
-) {
-}
+)
