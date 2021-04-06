@@ -2,6 +2,7 @@ package com.depromeet.webtoon.domain.author
 
 import com.depromeet.webtoon.domain.author.dto.AuthorCreateRequestDto
 import com.depromeet.webtoon.domain.author.dto.AuthorCreateResponseDto
+import com.depromeet.webtoon.exceptions.ApiValidationException
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity

@@ -1,3 +1,3 @@
-package com.depromeet.webtoon.domain.author
+package com.depromeet.webtoon.exceptions
 
 class ApiValidationException(message: String) : RuntimeException(message)
