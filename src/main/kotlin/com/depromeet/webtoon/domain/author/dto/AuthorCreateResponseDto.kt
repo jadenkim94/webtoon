@@ -1,6 +1,7 @@
 package com.depromeet.webtoon.domain.author.dto
 
 import com.depromeet.webtoon.domain.author.Author
+import org.springframework.validation.Errors
 import java.time.LocalDateTime
 
 data class AuthorCreateResponseDto(
