@@ -10,7 +10,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 class ApiValidationExceptionHandler : ResponseEntityExceptionHandler() {
 
     @ExceptionHandler(value = [ApiValidationException::class])
-    fun handleConflict(ex: ApiValidationException, request: WebRequest): ResponseEntity<Any> {
-        return ResponseEntity.badRequest().body(ex.message.toString())
+    fun handleValidationExceptions(ex: ApiValidationException, request: WebRequest): ResponseEntity<String> {
+        return ResponseEntity.badRequest().body(ex.message)
     }
 }
