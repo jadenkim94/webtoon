@@ -4,6 +4,8 @@ dependencies {
     api("org.springframework.boot:spring-boot-starter-validation")
 
     runtimeOnly("com.h2database:h2")
+
+    integrationTestImplementation("com.h2database:h2")
 }
 
 tasks.jar { enabled = true }

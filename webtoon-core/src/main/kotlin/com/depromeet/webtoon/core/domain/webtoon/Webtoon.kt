@@ -19,6 +19,8 @@ class Webtoon(
     name: String,
     authors: List<Author>
 ) {
+    constructor() : this("", emptyList())
+
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id")
