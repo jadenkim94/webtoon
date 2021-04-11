@@ -1,5 +1,6 @@
 dependencies {
     implementation(project(":webtoon-core"))
+    implementation("org.springframework.boot:spring-boot-starter-batch")
 }
 tasks.jar {
     enabled = true
