@@ -37,4 +37,8 @@ class Author(
     @LastModifiedDate
     var lastModifiedAt: LocalDateTime = LocalDateTime.MIN
         private set
+
+    override fun toString(): String {
+        return this.name
+    }
 }

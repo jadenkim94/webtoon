@@ -39,4 +39,10 @@ class Webtoon(
     @LastModifiedDate
     var lastModifiedAt: LocalDateTime = LocalDateTime.MIN
         private set
+
+    override fun toString(): String {
+        return "Webtoon(name='$name', authors=$authors)"
+    }
+
+
 }

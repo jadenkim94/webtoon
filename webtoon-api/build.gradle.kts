@@ -2,6 +2,8 @@ dependencies {
     implementation(project(":webtoon-core"))
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     implementation("org.springframework.boot:spring-boot-starter-web")
+
+    integrationTestImplementation("com.h2database:h2")
 }
 
 tasks.jar {
