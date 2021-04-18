@@ -1,0 +1,22 @@
+# https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties
+# https://www.jetbrains.com/help/rider/EditorConfig_Index.html
+
+root = true
+
+[*]
+indent_style = space
+indent_size = 4
+continuation_indent_size = 8
+end_of_line = lf
+insert_final_newline = true
+charset = utf-8
+trim_trailing_whitespace = true
+
+[*.{kt, kts}]
+disabled_rules = import-ordering
+
+[*.yml]
+indent_size = 2
+
+[*.{bat, cmd}]
+end_of_line = crlf
