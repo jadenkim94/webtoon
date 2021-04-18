@@ -1,6 +1,5 @@
 package com.depromeet.webtoon.core.domain.webtoon
 
-import com.depromeet.webtoon.core.domain.author.model.Author
 import com.depromeet.webtoon.core.domain.webtoon.model.Webtoon
 import com.depromeet.webtoon.core.domain.webtoon.repository.WebtoonRepository
 import com.depromeet.webtoon.core.type.WebtoonSite
@@ -16,7 +15,7 @@ class WebtoonRepositoryTest constructor(
 
     test("Webtoon 생성 및 반환 확인") {
         // given
-        val testWebtoon = Webtoon(title = "웹툰", site = WebtoonSite.NAVER, author = emptyList<Author>())
+        val testWebtoon = Webtoon(title = "test", authors = listOf(), site = WebtoonSite.NAVER)
 
         // when
         val savedWebtoon = webtoonRepository.saveAndFlush(testWebtoon)

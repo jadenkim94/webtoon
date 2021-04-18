@@ -29,7 +29,7 @@ class AuthorService constructor(val authorRepository: AuthorRepository) {
         require(authorNames.isNotEmpty()) { "조회 사이즈가 0입니다." }
 
         // 이미 작가가 존재하는지 확인한다.
-        val foundAuthors = authorRepository.findAllByName(authorNames)
+        val foundAuthors = authorRepository.findAllByNameIn(authorNames)
 
         // 만약 author가 존재하지 않는 경우 새롭게 추가한다.
         val notSavedAuthors = authorNames - foundAuthors.map { it.name }

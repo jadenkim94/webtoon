@@ -23,7 +23,7 @@ class Webtoon constructor(
     id: Long? = null,
     title: String = "",
     site: WebtoonSite = NONE,
-    authors: List<Author> = emptyList(),
+    authors: List<Author> = mutableListOf(),
     createdAt: LocalDateTime? = null,
     modifiedAt: LocalDateTime? = null,
 ) {
@@ -42,7 +42,7 @@ class Webtoon constructor(
     var site: WebtoonSite = site
 
     @ManyToMany
-    var authors: List<Author> = authors
+    var authors: MutableList<Author> = authors.toMutableList()
 
     @CreatedDate
     var createdAt: LocalDateTime? = createdAt

@@ -51,7 +51,7 @@ class AuthorServiceTest : FunSpec({
             // given
             val requestAuthorNames = listOf("김훈", "김초엽")
             val savedAuthors = requestAuthorNames.mapIndexed { idx, name -> authorFixture(idx.toLong(), name) }
-            every { authorRepository.findAllByName(any()) } returns savedAuthors
+            every { authorRepository.findAllByNameIn(any()) } returns savedAuthors
 
             // when
             val resultAuthors = authorService.findOrCreateAuthors(requestAuthorNames)
@@ -59,7 +59,7 @@ class AuthorServiceTest : FunSpec({
             // then
             resultAuthors.map { it.name } shouldContainExactly requestAuthorNames
             verify {
-                authorRepository.findAllByName(requestAuthorNames)
+                authorRepository.findAllByNameIn(requestAuthorNames)
             }
         }
 
@@ -69,7 +69,7 @@ class AuthorServiceTest : FunSpec({
             val savedAuthorName = listOf("김훈")
             val notExistAuthorNames = listOf("김초엽", "전민희")
 
-            every { authorRepository.findAllByName(any()) } returns savedAuthorName.map { authorFixture(name = it) }
+            every { authorRepository.findAllByNameIn(any()) } returns savedAuthorName.map { authorFixture(name = it) }
             every { authorRepository.saveAll(any<List<Author>>()) } returns notExistAuthorNames.map { authorFixture(name = it) }
 
             // when
@@ -78,7 +78,7 @@ class AuthorServiceTest : FunSpec({
             // then
             resultAuthors.map { it.name } shouldContainExactlyInAnyOrder requestAuthorNames
             verify {
-                authorRepository.findAllByName(
+                authorRepository.findAllByNameIn(
                     withArg { it shouldContainExactlyInAnyOrder requestAuthorNames }
                 )
             }

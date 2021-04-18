@@ -20,7 +20,7 @@ class Author
 constructor(
     id: Long? = null,
     name: String = "",
-    webtoons: List<Webtoon> = emptyList(),
+    webtoons: List<Webtoon> = mutableListOf(),
     createdAt: LocalDateTime? = null,
     modifiedAt: LocalDateTime? = null,
 ) {
