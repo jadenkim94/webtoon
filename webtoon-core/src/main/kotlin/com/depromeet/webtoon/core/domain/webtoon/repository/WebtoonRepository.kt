@@ -1,5 +1,6 @@
-package com.depromeet.webtoon.core.domain.webtoon
+package com.depromeet.webtoon.core.domain.webtoon.repository
 
+import com.depromeet.webtoon.core.domain.webtoon.model.Webtoon
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 

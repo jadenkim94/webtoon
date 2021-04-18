@@ -1,7 +1,7 @@
 package com.depromeet.webtoon.api.endpoint.webtoon
 
-import com.depromeet.webtoon.core.domain.webtoon.WebtoonService
-import com.depromeet.webtoon.core.domain.webtoon.dto.WebtoonCreateRequestDto
+import com.depromeet.webtoon.core.domain.webtoon.service.WebtoonService
+import com.depromeet.webtoon.core.domain.webtoon.dto.WebtoonCreateRequest
 import com.depromeet.webtoon.core.domain.webtoon.dto.WebtoonCreateResponseDto
 import com.depromeet.webtoon.core.exceptions.ApiValidationException
 import org.slf4j.LoggerFactory
@@ -29,13 +29,16 @@ class WebtoonController(@Autowired val webtoonService: WebtoonService) {
 
     @PostMapping("/api/v1/webtoons")
     @ResponseBody
-    fun createWebtoon(@RequestBody @Validated webtoonCreateRequestDto: WebtoonCreateRequestDto, errors: Errors): ResponseEntity<WebtoonCreateResponseDto> {
+    fun createWebtoon(
+        @RequestBody @Validated webtoonCreateRequest: WebtoonCreateRequest,
+        errors: Errors
+    ): ResponseEntity<WebtoonCreateResponseDto> {
         if (errors.hasErrors()) {
             val defaultMessage = errors.fieldError?.defaultMessage
             throw ApiValidationException(defaultMessage!!)
         }
-        log.info("웹툰 생성 요청 입력 값 name -> ${webtoonCreateRequestDto.name}")
-        val createdWebtoonDto = webtoonService.createWebtoon(webtoonCreateRequestDto)
+        log.info("웹툰 생성 요청 입력 값 name -> ${webtoonCreateRequest.title}")
+        val createdWebtoonDto = webtoonService.createWebtoon(webtoonCreateRequest)
         return ResponseEntity.status(HttpStatus.CREATED).body(createdWebtoonDto)
     }
 }
