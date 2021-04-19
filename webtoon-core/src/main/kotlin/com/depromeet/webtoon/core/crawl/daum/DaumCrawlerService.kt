@@ -1,8 +1,8 @@
 package com.depromeet.webtoon.core.crawl.daum
 
 import com.depromeet.webtoon.core.crawl.daum.dto.DaumWebtoonCrawlResult
-import com.depromeet.webtoon.core.domain.webtoon.Webtoon
-import com.depromeet.webtoon.core.domain.webtoon.WebtoonRepository
+import com.depromeet.webtoon.core.domain.webtoon.model.Webtoon
+import com.depromeet.webtoon.core.domain.webtoon.repository.WebtoonRepository
 import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
 import org.springframework.web.reactive.function.client.WebClient
@@ -45,7 +45,7 @@ class DaumCrawlerService(val daumRequestAdapter: DaumRequestAdapter, val webtoon
             .bodyToMono(DaumWebtoonCrawlResult::class.java).block()
 
         val webToonList = daumRequestAdapter.rawWebtoonListToWebtoonList(result!!)
-        
+
         webToonList.forEach { println(it) }
         return webToonList
     }

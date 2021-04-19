@@ -25,6 +25,7 @@ subprojects {
         plugin("idea")
         plugin("java-library")
         plugin("kotlin")
+        plugin("java-test-fixtures")
         plugin("org.springframework.boot")
         plugin("io.spring.dependency-management")
         plugin("org.jetbrains.kotlin.plugin.spring")

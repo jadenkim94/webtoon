@@ -1,20 +1,18 @@
 package com.depromeet.webtoon.core.domain.author.dto
 
-import com.depromeet.webtoon.core.domain.author.Author
+import com.depromeet.webtoon.core.domain.author.model.Author
 import java.time.LocalDateTime
 
 data class AuthorCreateResponseDto(
     val id: Long?,
     val name: String,
     val createdAt: LocalDateTime,
-    val lastModifiedAt: LocalDateTime
+    val modifiedAt: LocalDateTime
 )
 
-fun Author.toAuthorCreateResponseDto(): AuthorCreateResponseDto {
-    return AuthorCreateResponseDto(
-        this.id,
-        this.name,
-        this.createdAt,
-        this.lastModifiedAt
-    )
-}
+fun Author.toAuthorCreateResponseDto(): AuthorCreateResponseDto = AuthorCreateResponseDto(
+    id = this.id,
+    name = this.name,
+    createdAt = this.createdAt!!,
+    modifiedAt = this.modifiedAt!!
+)
