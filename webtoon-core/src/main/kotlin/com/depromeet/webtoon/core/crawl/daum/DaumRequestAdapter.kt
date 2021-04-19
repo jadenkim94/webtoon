@@ -7,11 +7,11 @@ import org.springframework.stereotype.Component
 
 @Component
 class DaumRequestAdapter {
-    
-    fun rawWebtoonListToWebtoonList(daumWebtoonCrawlResult: DaumWebtoonCrawlResult):List<Webtoon> {
+
+    fun rawWebtoonListToWebtoonList(daumWebtoonCrawlResult: DaumWebtoonCrawlResult): List<Webtoon> {
         val rawWebtoonList = daumWebtoonCrawlResult.data.webtoons
 
-        val webtoonList = rawWebtoonList.map { rawWebtoon ->
+        return rawWebtoonList.map { rawWebtoon ->
             Webtoon(
                 rawWebtoon.title,
                 // List<Author>
@@ -19,6 +19,5 @@ class DaumRequestAdapter {
                     .distinctBy { author -> author.name }
             )
         }
-        return webtoonList
     }
 }
